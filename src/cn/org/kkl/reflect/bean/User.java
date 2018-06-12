@@ -2,6 +2,8 @@ package cn.org.kkl.reflect.bean;
 
 public class User {
 	
+	public String uuid;
+	
 	private String name;
 	
 	private String password;
@@ -14,8 +16,31 @@ public class User {
 	
 	private boolean isAdult;
 	
+	private int id;
+	
+	private int getId() {
+		return id;
+	}
+
+	private void setId(int id) {
+		this.id = id;
+	}
+
 	public User() {
 		super();
+	}
+
+	private User(String name, String password) {
+		this();
+		this.name = name;
+		this.password = password;
+	}
+
+	public User(String name, String password, int age) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.age = age;
 	}
 
 	public User(String name, String password, int age, char gender, double salary, boolean isAdult) {
@@ -26,6 +51,15 @@ public class User {
 		this.gender = gender;
 		this.salary = salary;
 		this.isAdult = isAdult;
+	}
+	
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 
 	public String getName() {
