@@ -1,5 +1,6 @@
 package cn.org.kkl.bytecodeo.javassist;
 
+@Author(name="kkl",year=2018)
 public class Emp {
 	
 	private int empno;
@@ -8,6 +9,11 @@ public class Emp {
 
 	public Emp() {
 		super();
+	}
+	
+	public int takeOver(int a,int b) {
+		int c=a%b;
+		return c;
 	}
 	
 	public Emp(int empno, String ename) {

@@ -53,19 +53,19 @@ public class Test {
 			
 			CtConstructor constructor=new CtConstructor(new CtClass[] {}, cc);
 			constructor.setBody("{super();}");
-			/*CtConstructor constructor2 = new CtConstructor(new CtClass[] {CtClass.intType,pool.get("java.lang.String")}, cc);
-			constructor2.setBody("{this();this.empno = empno; this.ename = ename;}");*/
+			CtConstructor constructor2 = new CtConstructor(new CtClass[] {CtClass.intType,pool.get("java.lang.String")}, cc);
+			constructor2.setBody("{this.empno = empno; this.ename = ename;}");
 			cc.addConstructor(constructor);
-			/*cc.addConstructor(constructor2);*/
+			cc.addConstructor(constructor2);
 			
 			cc.debugWriteFile("D:"+File.separator+"temp");
 			System.out.println("run success");
 			
 		} catch (CannotCompileException e) {
 			e.printStackTrace();
-		} /*catch (NotFoundException e) {
+		} catch (NotFoundException e) {
 			e.printStackTrace();
-		}*/
+		}
 		
 		
 	}
