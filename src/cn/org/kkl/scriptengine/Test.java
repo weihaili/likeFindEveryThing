@@ -1,5 +1,8 @@
 package cn.org.kkl.scriptengine;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.net.URL;
 import java.util.List;
 
 import javax.script.Invocable;
@@ -11,11 +14,30 @@ public class Test {
 	
 	public static void main(String[] args) {
 		Test t=new Test();
-		t.test03();
+		t.test04();
 		
 	}
 	
-	
+	/**
+	 * 使用脚本引擎执行外部js文件
+	 * 1.在文件系统创建js文件
+	 * 2.使用反射获取类加载器，使用类加载器加载js文件
+	 * 3.使用脚本引擎执行该js文件
+	 */
+	private void test04() {
+		ScriptEngineManager sem=new ScriptEngineManager();
+		ScriptEngine engine=sem.getEngineByName("js");
+		
+		URL url=Test.class.getClassLoader().getResource("test.js");
+		try {
+			engine.eval(new FileReader(url.getPath()));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (ScriptException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * 导入java包，使用java中的API 
 	 */
