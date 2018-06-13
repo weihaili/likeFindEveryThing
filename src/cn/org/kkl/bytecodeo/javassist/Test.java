@@ -24,6 +24,8 @@ public class Test {
 		t.test();
 	}
 	
+	
+	
 	/**
 	 * 使用javassist步骤
 	 * 1. 获取类池 classpool
@@ -32,7 +34,7 @@ public class Test {
 	 */
 	private void test() {
 		ClassPool pool=ClassPool.getDefault();
-		CtClass cc=pool.makeClass("cn.org.kkl.bytecodeo.javassist.Emp");
+		CtClass cc=pool.makeClass("Emp");//指定.class文件的存放位置
 		
 		try {
 			CtField empnoField=CtField.make("private int empno;", cc);
@@ -51,10 +53,10 @@ public class Test {
 			
 			CtConstructor constructor=new CtConstructor(new CtClass[] {}, cc);
 			constructor.setBody("{super();}");
-			//CtConstructor constructor2 = new CtConstructor(new CtClass[] {CtClass.intType,pool.get("java.lang.String")}, cc);
-			//constructor2.setBody("{this();this.empno = empno; this.ename = ename;}");
+			/*CtConstructor constructor2 = new CtConstructor(new CtClass[] {CtClass.intType,pool.get("java.lang.String")}, cc);
+			constructor2.setBody("{this();this.empno = empno; this.ename = ename;}");*/
 			cc.addConstructor(constructor);
-			//cc.addConstructor(constructor2);
+			/*cc.addConstructor(constructor2);*/
 			
 			cc.debugWriteFile("D:"+File.separator+"temp");
 			System.out.println("run success");
