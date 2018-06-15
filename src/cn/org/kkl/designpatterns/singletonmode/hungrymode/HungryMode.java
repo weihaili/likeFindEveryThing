@@ -7,15 +7,12 @@ package cn.org.kkl.designpatterns.singletonmode.hungrymode;
  */
 public class HungryMode {
 	
-	private static HungryMode instance;
+	private static HungryMode instance=new HungryMode();
 	
 	private HungryMode() {
 	}
 	
 	public static synchronized HungryMode newInstance() {
-		if (instance==null) {
-			instance=new HungryMode();
-		}
 		return instance;
 	}
 	
